@@ -26,11 +26,11 @@ namespace PersonelTakip
 
                 var okuyucu = cmd.ExecuteReader();
 
-                List<TblPersonel> liste = new();
+                List<Personeller> liste = new();
 
                 while (okuyucu.Read())
                 {
-                    TblPersonel personel = new TblPersonel();
+                    Personeller personel = new Personeller();
 
                     personel.Id = okuyucu.GetInt32("Id");
                     personel.Ad = okuyucu.GetString("Ad");
@@ -57,7 +57,7 @@ namespace PersonelTakip
 
         }
 
-        class TblPersonel
+        class Personeller
         {
             public int Id { get; set; }
             public string Ad { get; set; }
@@ -75,7 +75,19 @@ namespace PersonelTakip
 
             TableProvider<Birimler> provider = new TableProvider<Birimler>(baglanti);
 
-            provider.ListeGetir();
+            var blistesi = provider.ListeGetir();
+
+            comboBox1.DataSource = blistesi;
+            comboBox1.DisplayMember = "BirimAd";
+            comboBox1.ValueMember = "Id";
+
+            TableProvider<Personeller> personelProvider = new(baglanti);
+            var plistesi = personelProvider.ListeGetir(); 
+            
+            lbPersoneller.DataSource = plistesi;
+            lbPersoneller.DisplayMember = "AdSoyad";
+            lbPersoneller.ValueMember = "Id";
+
         }
     }
 }

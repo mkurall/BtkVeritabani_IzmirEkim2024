@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace PersonelTakip
 {
-    public class TableProvider<T>
+    public class TableProvider<T> where T : class
     {
         SqlConnection baglanti;
         public TableProvider(SqlConnection baglanti)
@@ -19,7 +19,10 @@ namespace PersonelTakip
         {
             string tblAd = typeof(T).Name;
 
-            SqlCommand cmd = new SqlCommand($"SELECT * FROM {tblAd}");
+            SqlCommand cmd = new SqlCommand($"SELECT * FROM {tblAd}", baglanti);
+
+            if(baglanti.State == System.Data.ConnectionState.Closed)
+                baglanti.Open();
 
             var okuyucu = cmd.ExecuteReader();
 
@@ -27,16 +30,59 @@ namespace PersonelTakip
 
             List<T> liste = new();
 
-            while(okuyucu.Read())
+            while(okuyucu.Read())//bir kayıt geldi
             {
-                foreach(var prop in props)
-                {
+                T nesne = Activator.CreateInstance<T>();//model
 
+                for (int i = 0; i < okuyucu.FieldCount; i++)//gelen veride kaç alan var
+                {
+                    string colName = okuyucu.GetName(i);//i.alanın adı ne
+
+                    var p = props.FirstOrDefault(x => x.Name == colName);//bu isimde modelde property var mı
+
+                    if(p!=null)//var ise
+                    {
+                        if(p.CanWrite)//ve yazılabilir ise
+                        {
+                            var data = okuyucu.GetValue(i);
+
+                            if(data == DBNull.Value)
+                                p.SetValue(nesne, null);//model üzerindeki bu propertye değeri yaz
+                            else 
+                                p.SetValue(nesne, data);
+                        }
+                    }
                 }
+
+              
+
+                liste.Add(nesne);//yeni nesneyi liseye ekle
+
             }
 
+            okuyucu.Close();
 
-            return new();
+            return liste;
+        }
+
+        public T Getir(int id)
+        {
+            return null;
+        }
+
+        public void Sil(int id)
+        {
+
+        }
+
+        public void Guncelle(T kayit, int id) 
+        {
+
+        }
+
+        public void Ekle(T kayit)
+        {
+
         }
     }
 }
