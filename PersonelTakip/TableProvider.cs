@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace PersonelTakip
 {
@@ -19,6 +20,21 @@ namespace PersonelTakip
             string tblAd = typeof(T).Name;
 
             SqlCommand cmd = new SqlCommand($"SELECT * FROM {tblAd}");
+
+            var okuyucu = cmd.ExecuteReader();
+
+            var props = typeof(T).GetProperties();
+
+            List<T> liste = new();
+
+            while(okuyucu.Read())
+            {
+                foreach(var prop in props)
+                {
+
+                }
+            }
+
 
             return new();
         }
