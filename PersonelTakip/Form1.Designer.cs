@@ -30,6 +30,9 @@
         {
             lbPersoneller = new ListBox();
             btnPersonelleriGetir = new Button();
+            comboBox1 = new ComboBox();
+            label1 = new Label();
+            btnBirimleriGetir = new Button();
             SuspendLayout();
             // 
             // lbPersoneller
@@ -51,21 +54,55 @@
             btnPersonelleriGetir.UseVisualStyleBackColor = false;
             btnPersonelleriGetir.Click += btnPersonelleriGetir_Click;
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(388, 174);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(311, 28);
+            comboBox1.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(322, 177);
+            label1.Name = "label1";
+            label1.Size = new Size(48, 20);
+            label1.TabIndex = 3;
+            label1.Text = "Birimi";
+            // 
+            // btnBirimleriGetir
+            // 
+            btnBirimleriGetir.Location = new Point(301, 22);
+            btnBirimleriGetir.Name = "btnBirimleriGetir";
+            btnBirimleriGetir.Size = new Size(145, 29);
+            btnBirimleriGetir.TabIndex = 4;
+            btnBirimleriGetir.Text = "Birimleri Getir";
+            btnBirimleriGetir.UseVisualStyleBackColor = true;
+            btnBirimleriGetir.Click += btnBirimleriGetir_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(820, 456);
+            Controls.Add(btnBirimleriGetir);
+            Controls.Add(label1);
+            Controls.Add(comboBox1);
             Controls.Add(btnPersonelleriGetir);
             Controls.Add(lbPersoneller);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private ListBox lbPersoneller;
         private Button btnPersonelleriGetir;
+        private ComboBox comboBox1;
+        private Label label1;
+        private Button btnBirimleriGetir;
     }
 }

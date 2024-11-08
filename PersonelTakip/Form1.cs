@@ -13,12 +13,12 @@ namespace PersonelTakip
 
         private void btnPersonelleriGetir_Click(object sender, EventArgs e)
         {
-            SqlConnection baglanti = new 
+            SqlConnection baglanti = new
                 SqlConnection("Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=PersonelDb;");
 
             baglanti.Open();
 
-            if(baglanti.State == System.Data.ConnectionState.Open)
+            if (baglanti.State == System.Data.ConnectionState.Open)
             {
                 MessageBox.Show("Baþlantý baþarýlý.");
 
@@ -28,7 +28,7 @@ namespace PersonelTakip
 
                 List<TblPersonel> liste = new();
 
-                while(okuyucu.Read())
+                while (okuyucu.Read())
                 {
                     TblPersonel personel = new TblPersonel();
 
@@ -36,7 +36,11 @@ namespace PersonelTakip
                     personel.Ad = okuyucu.GetString("Ad");
                     personel.Soyad = okuyucu.GetString("Soyad");
                     personel.Kidem = okuyucu.GetByte("Kidem");
-                    personel.BirimId = okuyucu.GetInt32("BirimId");
+
+                    var x = okuyucu.GetValue("BirimId");
+
+                    personel.BirimId = (x == DBNull.Value ? null : (int)x);
+
                     liste.Add(personel);
                 }
 
@@ -50,7 +54,7 @@ namespace PersonelTakip
                 MessageBox.Show("Baþlantý baþarýsýz. Lütfen baðlantý cümlenizi kontrol edin!");
             }
 
-            
+
         }
 
         class TblPersonel
@@ -59,9 +63,19 @@ namespace PersonelTakip
             public string Ad { get; set; }
             public string Soyad { get; set; }
             public byte Kidem { get; set; }
-            public int BirimId { get; set; }
+            public int? BirimId { get; set; }
 
             public string AdSoyad { get { return Ad + " " + Soyad; } }
+        }
+
+        private void btnBirimleriGetir_Click(object sender, EventArgs e)
+        {
+            SqlConnection baglanti = new
+                SqlConnection("Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=PersonelDb;");
+
+            TableProvider<Birimler> provider = new TableProvider<Birimler>(baglanti);
+
+            provider.ListeGetir();
         }
     }
 }
