@@ -5,7 +5,9 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonelTakip", "PersonelTakip\PersonelTakip.csproj", "{4E0B66E6-95ED-470E-BF34-D9AF573D6958}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCoreModelFirst", "EfCoreModelFirst\EfCoreModelFirst.csproj", "{56AFFB30-55AC-48F4-972A-8099FAE49418}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfCoreModelFirst", "EfCoreModelFirst\EfCoreModelFirst.csproj", "{56AFFB30-55AC-48F4-972A-8099FAE49418}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtkKursTakip", "BtkKursTakip\BtkKursTakip.csproj", "{DDA32DB4-6AEA-4F62-BE4A-FC1164A4EA3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{56AFFB30-55AC-48F4-972A-8099FAE49418}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56AFFB30-55AC-48F4-972A-8099FAE49418}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56AFFB30-55AC-48F4-972A-8099FAE49418}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDA32DB4-6AEA-4F62-BE4A-FC1164A4EA3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDA32DB4-6AEA-4F62-BE4A-FC1164A4EA3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDA32DB4-6AEA-4F62-BE4A-FC1164A4EA3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDA32DB4-6AEA-4F62-BE4A-FC1164A4EA3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
