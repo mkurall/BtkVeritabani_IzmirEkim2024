@@ -41,6 +41,7 @@
             colIlce = new DataGridViewComboBoxColumn();
             colKursYeri = new DataGridViewTextBoxColumn();
             colEgitmen = new DataGridViewComboBoxColumn();
+            btnSil = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -81,6 +82,7 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(btnSil);
             panel2.Controls.Add(btnTamam);
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 401);
@@ -169,6 +171,18 @@
             colEgitmen.Name = "colEgitmen";
             colEgitmen.Width = 200;
             // 
+            // btnSil
+            // 
+            btnSil.BackColor = Color.OrangeRed;
+            btnSil.ForeColor = Color.White;
+            btnSil.Location = new Point(12, 10);
+            btnSil.Name = "btnSil";
+            btnSil.Size = new Size(197, 44);
+            btnSil.TabIndex = 1;
+            btnSil.Text = "Seçili Kursu Sil";
+            btnSil.UseVisualStyleBackColor = false;
+            btnSil.Click += btnSil_Click;
+            // 
             // FrmKurslar
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -202,5 +216,6 @@
         private DataGridViewComboBoxColumn colIlce;
         private DataGridViewTextBoxColumn colKursYeri;
         private DataGridViewComboBoxColumn colEgitmen;
+        private Button btnSil;
     }
 }

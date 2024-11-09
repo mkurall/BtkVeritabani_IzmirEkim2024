@@ -35,12 +35,34 @@ namespace BtkKursTakip
         {
             foreach (DbKurs kurs in blist)//yeni eklenen kayıtları ef core' a ekle
             {
-                if(kurs.Id == 0)//yeni kayıtların id si 0 olur
+                if (kurs.Id == 0)//yeni kayıtların id si 0 olur
                     context.Kurslar.Add(kurs);
             }
 
             context.SaveChanges();
             Close();
+        }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+
+            int index = dataGridView1.CurrentRow.Index;
+
+            DbKurs kurs = dataGridView1.Rows[index].DataBoundItem as DbKurs;
+
+            if (kurs != null)
+            {
+                var cevap = MessageBox.Show(kurs.Ad + " isimli kursu silmek" +
+                    "istediğinize emin misiniz?", "Dikkat",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (cevap == DialogResult.Yes)
+                {
+                    blist.Remove(kurs);
+                    context.Kurslar.Remove(kurs);
+                }
+            }
+
         }
     }
 }
