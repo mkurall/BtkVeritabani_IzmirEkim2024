@@ -20,6 +20,20 @@ namespace EfCoreModelFirst
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = blist;
 
+            var sinifListesi = context.Siniflar.ToList();
+            colSinif.DataSource = sinifListesi;
+            colSinif.DisplayMember = "Ad";
+            colSinif.ValueMember = "Id";
+
+            List<Cinsiyet> cList = new List<Cinsiyet>();
+
+            cList.Add(new Cinsiyet() { Id = 0, Ad = "Erkek" });
+            cList.Add(new Cinsiyet() { Id = 1, Ad = "Kadýn" });
+            cList.Add(new Cinsiyet() { Id = 3, Ad = "Belirtmek Ýstemiyorum" });
+            colCinsiyet.DataSource = cList;
+            colCinsiyet.DisplayMember = "Ad";
+            colCinsiyet.ValueMember = "Id";
+
 
         }
 

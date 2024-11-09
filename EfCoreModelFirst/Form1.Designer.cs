@@ -31,9 +31,11 @@
             label1 = new Label();
             btnSiniflar = new Button();
             dataGridView1 = new DataGridView();
+            colNumara = new DataGridViewTextBoxColumn();
             colAd = new DataGridViewTextBoxColumn();
             colSoyad = new DataGridViewTextBoxColumn();
-            colNumara = new DataGridViewTextBoxColumn();
+            colCinsiyet = new DataGridViewComboBoxColumn();
+            colSinif = new DataGridViewComboBoxColumn();
             btnKaydet = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -61,29 +63,14 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colAd, colSoyad, colNumara });
-            dataGridView1.Location = new Point(24, 110);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colNumara, colAd, colSoyad, colCinsiyet, colSinif });
+            dataGridView1.Location = new Point(3, 122);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(579, 188);
+            dataGridView1.Size = new Size(785, 316);
             dataGridView1.TabIndex = 2;
-            // 
-            // colAd
-            // 
-            colAd.DataPropertyName = "Ad";
-            colAd.HeaderText = "Ad";
-            colAd.MinimumWidth = 6;
-            colAd.Name = "colAd";
-            colAd.Width = 125;
-            // 
-            // colSoyad
-            // 
-            colSoyad.DataPropertyName = "Soyad";
-            colSoyad.HeaderText = "Soyad";
-            colSoyad.MinimumWidth = 6;
-            colSoyad.Name = "colSoyad";
-            colSoyad.Width = 125;
             // 
             // colNumara
             // 
@@ -92,6 +79,38 @@
             colNumara.MinimumWidth = 6;
             colNumara.Name = "colNumara";
             colNumara.Width = 125;
+            // 
+            // colAd
+            // 
+            colAd.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colAd.DataPropertyName = "Ad";
+            colAd.HeaderText = "Ad";
+            colAd.MinimumWidth = 6;
+            colAd.Name = "colAd";
+            // 
+            // colSoyad
+            // 
+            colSoyad.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colSoyad.DataPropertyName = "Soyad";
+            colSoyad.HeaderText = "Soyad";
+            colSoyad.MinimumWidth = 6;
+            colSoyad.Name = "colSoyad";
+            // 
+            // colCinsiyet
+            // 
+            colCinsiyet.DataPropertyName = "Cinsiyet";
+            colCinsiyet.HeaderText = "Cinsiyet";
+            colCinsiyet.MinimumWidth = 6;
+            colCinsiyet.Name = "colCinsiyet";
+            colCinsiyet.Width = 170;
+            // 
+            // colSinif
+            // 
+            colSinif.DataPropertyName = "SinifId";
+            colSinif.HeaderText = "Sınıfı";
+            colSinif.MinimumWidth = 6;
+            colSinif.Name = "colSinif";
+            colSinif.Width = 125;
             // 
             // btnKaydet
             // 
@@ -124,9 +143,11 @@
         private Label label1;
         private Button btnSiniflar;
         private DataGridView dataGridView1;
+        private Button btnKaydet;
+        private DataGridViewTextBoxColumn colNumara;
         private DataGridViewTextBoxColumn colAd;
         private DataGridViewTextBoxColumn colSoyad;
-        private DataGridViewTextBoxColumn colNumara;
-        private Button btnKaydet;
+        private DataGridViewComboBoxColumn colCinsiyet;
+        private DataGridViewComboBoxColumn colSinif;
     }
 }
