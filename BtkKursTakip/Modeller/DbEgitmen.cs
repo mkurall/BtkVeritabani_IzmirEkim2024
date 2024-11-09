@@ -12,5 +12,6 @@ namespace BtkKursTakip.Modeller
         public int Id { get; set; }
         public string Ad { get; set; }
         public string Soyad { get; set; }
+        public List<DbKurs> Kurslar { get; set; } = new();//null
     }
 }
