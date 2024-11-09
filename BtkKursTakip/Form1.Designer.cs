@@ -84,6 +84,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(255, 128, 128);
             ClientSize = new Size(942, 487);
             Controls.Add(toolStrip1);
             Name = "Form1";
