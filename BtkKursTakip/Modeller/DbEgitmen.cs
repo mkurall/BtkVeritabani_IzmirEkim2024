@@ -10,7 +10,9 @@ namespace BtkKursTakip.Modeller
     public class DbEgitmen
     {
         public int Id { get; set; }
-        public string Ad { get; set; }
+        [MaxLength(50)]
+        public string Ad { get; set; }  
+        [MaxLength(50)]
         public string Soyad { get; set; }
         public List<DbKurs> Kurslar { get; set; } = new();//null
     }
