@@ -12,31 +12,26 @@ using System.Windows.Forms;
 
 namespace BtkKursTakip
 {
-    public partial class FrmKurslar : Form
+    public partial class FrmEgitmenler : Form
     {
         BtkKursDbContext context = new BtkKursDbContext();
-        BindingList<DbKurs> blist;
+        BindingList<DbEgitmen> blist;
 
-        public FrmKurslar()
+        public FrmEgitmenler()
         {
             InitializeComponent();
 
-            blist = new BindingList<DbKurs>(context.Kurslar.ToList());
+            blist = new BindingList<DbEgitmen>(context.Egitmenler.ToList());
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = blist;
-
-            colEgitmen.DataSource = context.Egitmenler.ToList();
-            colEgitmen.DisplayMember = "AdSoyad";
-            colEgitmen.ValueMember = "Id";
-
         }
 
         private void btnTamam_Click(object sender, EventArgs e)
         {
-            foreach (DbKurs kurs in blist)//yeni eklenen kayıtları ef core' a ekle
+            foreach (DbEgitmen egitmen in blist)//yeni eklenen kayıtları ef core' a ekle
             {
-                if(kurs.Id == 0)//yeni kayıtların id si 0 olur
-                    context.Kurslar.Add(kurs);
+                if (egitmen.Id == 0)
+                    context.Egitmenler.Add(egitmen);
             }
 
             context.SaveChanges();

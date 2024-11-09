@@ -12,5 +12,11 @@ namespace BtkKursTakip
             FrmKurslar kurs = new FrmKurslar();
             kurs.ShowDialog();
         }
+
+        private void tsbEgitmenler_Click(object sender, EventArgs e)
+        {
+            FrmEgitmenler form = new FrmEgitmenler();
+            form.ShowDialog();
+        }
     }
 }

@@ -32,7 +32,7 @@
             toolStripButton1 = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             tsbKurslar = new ToolStripButton();
-            toolStripButton3 = new ToolStripButton();
+            tsbEgitmenler = new ToolStripButton();
             toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -40,7 +40,7 @@
             // 
             toolStrip1.BackColor = Color.FromArgb(255, 255, 192);
             toolStrip1.ImageScalingSize = new Size(32, 32);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator1, tsbKurslar, toolStripButton3 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator1, tsbKurslar, tsbEgitmenler });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(942, 39);
@@ -71,14 +71,15 @@
             tsbKurslar.Text = "toolStripButton2";
             tsbKurslar.Click += tsbKurslar_Click;
             // 
-            // toolStripButton3
+            // tsbEgitmenler
             // 
-            toolStripButton3.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton3.Image = Properties.Resources.training;
-            toolStripButton3.ImageTransparentColor = Color.Magenta;
-            toolStripButton3.Name = "toolStripButton3";
-            toolStripButton3.Size = new Size(36, 36);
-            toolStripButton3.Text = "toolStripButton3";
+            tsbEgitmenler.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            tsbEgitmenler.Image = Properties.Resources.training;
+            tsbEgitmenler.ImageTransparentColor = Color.Magenta;
+            tsbEgitmenler.Name = "tsbEgitmenler";
+            tsbEgitmenler.Size = new Size(36, 36);
+            tsbEgitmenler.Text = "toolStripButton3";
+            tsbEgitmenler.Click += tsbEgitmenler_Click;
             // 
             // Form1
             // 
@@ -101,6 +102,6 @@
         private ToolStripButton toolStripButton1;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton tsbKurslar;
-        private ToolStripButton toolStripButton3;
+        private ToolStripButton tsbEgitmenler;
     }
 }
