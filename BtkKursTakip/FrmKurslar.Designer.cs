@@ -29,11 +29,18 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            pictureBox1 = new PictureBox();
             label1 = new Label();
+            pictureBox1 = new PictureBox();
             panel2 = new Panel();
             btnTamam = new Button();
             dataGridView1 = new DataGridView();
+            colAd = new DataGridViewTextBoxColumn();
+            colAciklama = new DataGridViewTextBoxColumn();
+            colTarih = new DataGridViewTextBoxColumn();
+            colSehir = new DataGridViewComboBoxColumn();
+            colIlce = new DataGridViewComboBoxColumn();
+            colKursYeri = new DataGridViewTextBoxColumn();
+            colEgitmen = new DataGridViewComboBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -48,18 +55,8 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(629, 71);
+            panel1.Size = new Size(1213, 71);
             panel1.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.online_learning;
-            pictureBox1.Location = new Point(12, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(53, 49);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -71,43 +68,112 @@
             label1.TabIndex = 1;
             label1.Text = "Kurslar";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.online_learning;
+            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(53, 49);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
             // panel2
             // 
             panel2.BackColor = Color.White;
             panel2.Controls.Add(btnTamam);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 405);
+            panel2.Location = new Point(0, 401);
             panel2.Name = "panel2";
-            panel2.Size = new Size(629, 64);
+            panel2.Size = new Size(1213, 64);
             panel2.TabIndex = 1;
             // 
             // btnTamam
             // 
+            btnTamam.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnTamam.BackColor = Color.SteelBlue;
             btnTamam.Font = new Font("Segoe UI", 11F);
             btnTamam.ForeColor = Color.White;
-            btnTamam.Location = new Point(472, 9);
+            btnTamam.Location = new Point(1066, 9);
             btnTamam.Name = "btnTamam";
             btnTamam.Size = new Size(135, 43);
             btnTamam.TabIndex = 0;
             btnTamam.Text = "Tamam";
             btnTamam.UseVisualStyleBackColor = false;
+            btnTamam.Click += btnTamam_Click;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colAd, colAciklama, colTarih, colSehir, colIlce, colKursYeri, colEgitmen });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 71);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(629, 334);
+            dataGridView1.Size = new Size(1213, 330);
             dataGridView1.TabIndex = 2;
+            // 
+            // colAd
+            // 
+            colAd.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colAd.DataPropertyName = "Ad";
+            colAd.HeaderText = "Kurs Adı";
+            colAd.MinimumWidth = 6;
+            colAd.Name = "colAd";
+            // 
+            // colAciklama
+            // 
+            colAciklama.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colAciklama.DataPropertyName = "Aciklama";
+            colAciklama.HeaderText = "Kurs Açıklaması";
+            colAciklama.MinimumWidth = 6;
+            colAciklama.Name = "colAciklama";
+            // 
+            // colTarih
+            // 
+            colTarih.DataPropertyName = "Tarih";
+            colTarih.HeaderText = "Tarih";
+            colTarih.MinimumWidth = 6;
+            colTarih.Name = "colTarih";
+            colTarih.Width = 125;
+            // 
+            // colSehir
+            // 
+            colSehir.DataPropertyName = "SehirId";
+            colSehir.HeaderText = "Şehir";
+            colSehir.MinimumWidth = 6;
+            colSehir.Name = "colSehir";
+            colSehir.Width = 125;
+            // 
+            // colIlce
+            // 
+            colIlce.DataPropertyName = "IlceId";
+            colIlce.HeaderText = "İlçe";
+            colIlce.MinimumWidth = 6;
+            colIlce.Name = "colIlce";
+            colIlce.Width = 125;
+            // 
+            // colKursYeri
+            // 
+            colKursYeri.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colKursYeri.DataPropertyName = "KursYeri";
+            colKursYeri.HeaderText = "Kurs Yeri";
+            colKursYeri.MinimumWidth = 6;
+            colKursYeri.Name = "colKursYeri";
+            // 
+            // colEgitmen
+            // 
+            colEgitmen.DataPropertyName = "EgitmenId";
+            colEgitmen.HeaderText = "Eğitmen";
+            colEgitmen.MinimumWidth = 6;
+            colEgitmen.Name = "colEgitmen";
+            colEgitmen.Width = 200;
             // 
             // FrmKurslar
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(629, 469);
+            ClientSize = new Size(1213, 465);
             Controls.Add(dataGridView1);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -129,5 +195,12 @@
         private Panel panel2;
         private Button btnTamam;
         private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn colAd;
+        private DataGridViewTextBoxColumn colAciklama;
+        private DataGridViewTextBoxColumn colTarih;
+        private DataGridViewComboBoxColumn colSehir;
+        private DataGridViewComboBoxColumn colIlce;
+        private DataGridViewTextBoxColumn colKursYeri;
+        private DataGridViewComboBoxColumn colEgitmen;
     }
 }

@@ -22,8 +22,20 @@ namespace BtkKursTakip
             InitializeComponent();
 
             blist = new BindingList<DbKurs>(context.Kurslar.ToList());
-
+            dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = blist;
+        }
+
+        private void btnTamam_Click(object sender, EventArgs e)
+        {
+            foreach (DbKurs kurs in blist)//yeni eklenen kayıtları ef core' a ekle
+            {
+                if(kurs.Id == 0)
+                    context.Kurslar.Add(kurs);
+            }
+
+            context.SaveChanges();
+            Close();
         }
     }
 }
