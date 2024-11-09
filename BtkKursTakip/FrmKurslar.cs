@@ -36,6 +36,13 @@ namespace BtkKursTakip
         private async void SehirleriGetir()
         {
             List<Sehir> sehirler = await TurkiyeAPI.SehirleriGetir();
+            colSehir.DataSource = sehirler;
+            colSehir.DisplayMember = "name";
+            colSehir.ValueMember = "id";
+
+
+            TurkiyeAPI.IlceleriGetir(35);
+
         }
 
 

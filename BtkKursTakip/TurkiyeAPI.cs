@@ -13,6 +13,11 @@ namespace BtkKursTakip
         public int id { get; set; }
         public string name { get; set; }
     }
+    public class Ilce
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+    }
 
     public class APIResponse
     {
@@ -42,6 +47,31 @@ namespace BtkKursTakip
                     string data = apiResponse.data.ToString();
 
                     list = JsonSerializer.Deserialize<List<Sehir>>(data);
+                }
+            }
+
+            return list;
+        }
+        public static async Task<List<Ilce>> IlceleriGetir(int sehirId)
+        {
+            List<Ilce> list = new();
+
+            HttpClient client = new HttpClient();
+
+            HttpResponseMessage resp = await client.GetAsync(baseUrl + 
+                $"districts?provinceId={sehirId}&fields=id,name");
+
+            if (resp.IsSuccessStatusCode)
+            {
+                string dataStr = await resp.Content.ReadAsStringAsync();
+
+                APIResponse apiResponse = JsonSerializer.Deserialize<APIResponse>(dataStr);
+
+                if (apiResponse.status == "OK")
+                {
+                    string data = apiResponse.data.ToString();
+
+                    list = JsonSerializer.Deserialize<List<Ilce>>(data);
                 }
             }
 
