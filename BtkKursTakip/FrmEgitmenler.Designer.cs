@@ -110,6 +110,7 @@
             dataGridView1.Size = new Size(598, 369);
             dataGridView1.TabIndex = 2;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.CellPainting += dataGridView1_CellPainting;
             // 
             // colAd
             // 
@@ -130,14 +131,12 @@
             // colSil
             // 
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.Red;
             dataGridViewCellStyle1.ForeColor = Color.White;
             colSil.DefaultCellStyle = dataGridViewCellStyle1;
             colSil.HeaderText = "Sil";
             colSil.MinimumWidth = 6;
             colSil.Name = "colSil";
-            colSil.Text = "Sil";
-            colSil.UseColumnTextForButtonValue = true;
+            colSil.Text = "";
             colSil.Width = 125;
             // 
             // FrmEgitmenler

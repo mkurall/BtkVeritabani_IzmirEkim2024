@@ -40,14 +40,14 @@ namespace BtkKursTakip
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == colSil.Index)
+            if (e.ColumnIndex == colSil.Index)
             {
-                DbEgitmen egitmen  = dataGridView1.Rows[e.RowIndex].DataBoundItem as DbEgitmen;
+                DbEgitmen egitmen = dataGridView1.Rows[e.RowIndex].DataBoundItem as DbEgitmen;
 
-                if(egitmen != null)
+                if (egitmen != null)
                 {
                     var cevap = MessageBox.Show(egitmen.AdSoyad + " isimli eğitmeni silmek" +
-                        "istediğinize emin misiniz?", "Dikkat", 
+                        "istediğinize emin misiniz?", "Dikkat",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (cevap == DialogResult.Yes)
@@ -56,6 +56,25 @@ namespace BtkKursTakip
                         context.Egitmenler.Remove(egitmen);
                     }
                 }
+            }
+        }
+
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex == colSil.Index && e.RowIndex>=0)
+            {
+                e.PaintContent(e.CellBounds);
+                e.PaintBackground(e.ClipBounds, false);
+
+                if (e.RowIndex < dataGridView1.RowCount - 1)
+                {
+                    e.Graphics.DrawImage(Properties.Resources.delete,
+                        new Rectangle(e.CellBounds.Left + 5, e.CellBounds.Top + 3, 20, 20),
+                        new Rectangle(0, 0, 24, 24), GraphicsUnit.Pixel);
+                }
+                
+
+                e.Handled = true;//ben çizdeim sen çizdirme
             }
         }
     }

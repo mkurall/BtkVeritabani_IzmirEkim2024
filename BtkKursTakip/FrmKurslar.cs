@@ -29,7 +29,15 @@ namespace BtkKursTakip
             colEgitmen.DisplayMember = "AdSoyad";
             colEgitmen.ValueMember = "Id";
 
+            SehirleriGetir();
+            
         }
+
+        private async void SehirleriGetir()
+        {
+            List<Sehir> sehirler = await TurkiyeAPI.SehirleriGetir();
+        }
+
 
         private void btnTamam_Click(object sender, EventArgs e)
         {
