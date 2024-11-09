@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label1 = new Label();
             pictureBox1 = new PictureBox();
@@ -36,6 +37,7 @@
             dataGridView1 = new DataGridView();
             colAd = new DataGridViewTextBoxColumn();
             colSoyad = new DataGridViewTextBoxColumn();
+            colSil = new DataGridViewButtonColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -50,7 +52,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(464, 71);
+            panel1.Size = new Size(598, 71);
             panel1.TabIndex = 0;
             // 
             // label1
@@ -80,7 +82,7 @@
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 440);
             panel2.Name = "panel2";
-            panel2.Size = new Size(464, 64);
+            panel2.Size = new Size(598, 64);
             panel2.TabIndex = 1;
             // 
             // btnTamam
@@ -89,7 +91,7 @@
             btnTamam.BackColor = Color.SteelBlue;
             btnTamam.Font = new Font("Segoe UI", 11F);
             btnTamam.ForeColor = Color.White;
-            btnTamam.Location = new Point(317, 9);
+            btnTamam.Location = new Point(451, 9);
             btnTamam.Name = "btnTamam";
             btnTamam.Size = new Size(135, 43);
             btnTamam.TabIndex = 0;
@@ -100,13 +102,14 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colAd, colSoyad });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colAd, colSoyad, colSil });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 71);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(464, 369);
+            dataGridView1.Size = new Size(598, 369);
             dataGridView1.TabIndex = 2;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // colAd
             // 
@@ -124,11 +127,24 @@
             colSoyad.Name = "colSoyad";
             colSoyad.Width = 200;
             // 
+            // colSil
+            // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.Red;
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            colSil.DefaultCellStyle = dataGridViewCellStyle1;
+            colSil.HeaderText = "Sil";
+            colSil.MinimumWidth = 6;
+            colSil.Name = "colSil";
+            colSil.Text = "Sil";
+            colSil.UseColumnTextForButtonValue = true;
+            colSil.Width = 125;
+            // 
             // FrmEgitmenler
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(464, 504);
+            ClientSize = new Size(598, 504);
             Controls.Add(dataGridView1);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -152,5 +168,6 @@
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn colAd;
         private DataGridViewTextBoxColumn colSoyad;
+        private DataGridViewButtonColumn colSil;
     }
 }

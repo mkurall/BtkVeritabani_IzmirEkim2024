@@ -37,5 +37,26 @@ namespace BtkKursTakip
             context.SaveChanges();
             Close();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == colSil.Index)
+            {
+                DbEgitmen egitmen  = dataGridView1.Rows[e.RowIndex].DataBoundItem as DbEgitmen;
+
+                if(egitmen != null)
+                {
+                    var cevap = MessageBox.Show(egitmen.AdSoyad + " isimli eğitmeni silmek" +
+                        "istediğinize emin misiniz?", "Dikkat", 
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (cevap == DialogResult.Yes)
+                    {
+                        blist.Remove(egitmen);
+                        context.Egitmenler.Remove(egitmen);
+                    }
+                }
+            }
+        }
     }
 }
