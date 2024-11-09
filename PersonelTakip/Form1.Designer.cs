@@ -33,6 +33,10 @@
             comboBox1 = new ComboBox();
             label1 = new Label();
             btnBirimleriGetir = new Button();
+            btnEfCoreKullan = new Button();
+            txtYeniBirim = new TextBox();
+            label2 = new Label();
+            btnBirimEkle = new Button();
             SuspendLayout();
             // 
             // lbPersoneller
@@ -81,11 +85,52 @@
             btnBirimleriGetir.UseVisualStyleBackColor = true;
             btnBirimleriGetir.Click += btnBirimleriGetir_Click;
             // 
+            // btnEfCoreKullan
+            // 
+            btnEfCoreKullan.BackColor = Color.FromArgb(128, 255, 128);
+            btnEfCoreKullan.Location = new Point(529, 26);
+            btnEfCoreKullan.Name = "btnEfCoreKullan";
+            btnEfCoreKullan.Size = new Size(249, 86);
+            btnEfCoreKullan.TabIndex = 5;
+            btnEfCoreKullan.Text = "EF Core Kullanarak Verileri Getir";
+            btnEfCoreKullan.UseVisualStyleBackColor = false;
+            btnEfCoreKullan.Click += btnEfCoreKullan_Click;
+            // 
+            // txtYeniBirim
+            // 
+            txtYeniBirim.Location = new Point(388, 141);
+            txtYeniBirim.Name = "txtYeniBirim";
+            txtYeniBirim.Size = new Size(311, 27);
+            txtYeniBirim.TabIndex = 6;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(307, 144);
+            label2.Name = "label2";
+            label2.Size = new Size(75, 20);
+            label2.TabIndex = 7;
+            label2.Text = "Yeni Birim";
+            // 
+            // btnBirimEkle
+            // 
+            btnBirimEkle.Location = new Point(707, 142);
+            btnBirimEkle.Name = "btnBirimEkle";
+            btnBirimEkle.Size = new Size(94, 29);
+            btnBirimEkle.TabIndex = 8;
+            btnBirimEkle.Text = "Ekle";
+            btnBirimEkle.UseVisualStyleBackColor = true;
+            btnBirimEkle.Click += btnBirimEkle_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(820, 456);
+            Controls.Add(btnBirimEkle);
+            Controls.Add(label2);
+            Controls.Add(txtYeniBirim);
+            Controls.Add(btnEfCoreKullan);
             Controls.Add(btnBirimleriGetir);
             Controls.Add(label1);
             Controls.Add(comboBox1);
@@ -104,5 +149,9 @@
         private ComboBox comboBox1;
         private Label label1;
         private Button btnBirimleriGetir;
+        private Button btnEfCoreKullan;
+        private TextBox txtYeniBirim;
+        private Label label2;
+        private Button btnBirimEkle;
     }
 }

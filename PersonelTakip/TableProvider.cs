@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -18,6 +19,11 @@ namespace PersonelTakip
         public List<T> ListeGetir()
         {
             string tblAd = typeof(T).Name;
+
+            var attr =  typeof(T).GetCustomAttribute<TabloAdiAttribute>();
+
+            if (attr != null)
+                tblAd = attr.TabloAdi;
 
             SqlCommand cmd = new SqlCommand($"SELECT * FROM {tblAd}", baglanti);
 

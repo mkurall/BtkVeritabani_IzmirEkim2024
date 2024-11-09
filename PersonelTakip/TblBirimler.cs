@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PersonelTakip
 {
-    public class Birimler
+    [TabloAdi("Birimler")]
+    public class TblBirimler //Birimler
     {
         public int Id { get; set; }
         public string BirimAd { get; set; }
