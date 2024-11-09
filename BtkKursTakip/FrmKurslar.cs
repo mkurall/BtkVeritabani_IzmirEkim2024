@@ -30,7 +30,7 @@ namespace BtkKursTakip
             colEgitmen.ValueMember = "Id";
 
             SehirleriGetir();
-            
+
         }
 
         private async void SehirleriGetir()
@@ -39,9 +39,6 @@ namespace BtkKursTakip
             colSehir.DataSource = sehirler;
             colSehir.DisplayMember = "name";
             colSehir.ValueMember = "id";
-
-
-            TurkiyeAPI.IlceleriGetir(35);
 
         }
 
@@ -79,5 +76,23 @@ namespace BtkKursTakip
             }
 
         }
+
+        private async void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == colSehir.Index)
+            {
+                int? id = (int?)dataGridView1.Rows[e.RowIndex].Cells[colSehir.Index].Value;
+
+                dataGridView1.Rows[e.RowIndex].Cells[colIlce.Index].Value = null;
+
+                if (id.HasValue)
+                {
+                    colIlce.DataSource = await TurkiyeAPI.IlceleriGetir((int)id);
+                    colIlce.DisplayMember = "name";
+                    colIlce.ValueMember = "id";
+                }
+            }
+        }
+
     }
 }

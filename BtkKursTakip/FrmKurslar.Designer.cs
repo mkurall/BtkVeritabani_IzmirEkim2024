@@ -32,6 +32,7 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            btnSil = new Button();
             btnTamam = new Button();
             dataGridView1 = new DataGridView();
             colAd = new DataGridViewTextBoxColumn();
@@ -41,7 +42,6 @@
             colIlce = new DataGridViewComboBoxColumn();
             colKursYeri = new DataGridViewTextBoxColumn();
             colEgitmen = new DataGridViewComboBoxColumn();
-            btnSil = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -90,6 +90,18 @@
             panel2.Size = new Size(1213, 64);
             panel2.TabIndex = 1;
             // 
+            // btnSil
+            // 
+            btnSil.BackColor = Color.OrangeRed;
+            btnSil.ForeColor = Color.White;
+            btnSil.Location = new Point(12, 10);
+            btnSil.Name = "btnSil";
+            btnSil.Size = new Size(197, 44);
+            btnSil.TabIndex = 1;
+            btnSil.Text = "Seçili Kursu Sil";
+            btnSil.UseVisualStyleBackColor = false;
+            btnSil.Click += btnSil_Click;
+            // 
             // btnTamam
             // 
             btnTamam.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -114,6 +126,7 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(1213, 330);
             dataGridView1.TabIndex = 2;
+            dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
             // 
             // colAd
             // 
@@ -170,18 +183,6 @@
             colEgitmen.MinimumWidth = 6;
             colEgitmen.Name = "colEgitmen";
             colEgitmen.Width = 200;
-            // 
-            // btnSil
-            // 
-            btnSil.BackColor = Color.OrangeRed;
-            btnSil.ForeColor = Color.White;
-            btnSil.Location = new Point(12, 10);
-            btnSil.Name = "btnSil";
-            btnSil.Size = new Size(197, 44);
-            btnSil.TabIndex = 1;
-            btnSil.Text = "Seçili Kursu Sil";
-            btnSil.UseVisualStyleBackColor = false;
-            btnSil.Click += btnSil_Click;
             // 
             // FrmKurslar
             // 
