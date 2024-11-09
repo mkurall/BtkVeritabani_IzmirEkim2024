@@ -30,6 +30,12 @@
         {
             label1 = new Label();
             btnSiniflar = new Button();
+            dataGridView1 = new DataGridView();
+            colAd = new DataGridViewTextBoxColumn();
+            colSoyad = new DataGridViewTextBoxColumn();
+            colNumara = new DataGridViewTextBoxColumn();
+            btnKaydet = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -53,15 +59,62 @@
             btnSiniflar.UseVisualStyleBackColor = false;
             btnSiniflar.Click += btnSiniflar_Click;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colAd, colSoyad, colNumara });
+            dataGridView1.Location = new Point(24, 110);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(579, 188);
+            dataGridView1.TabIndex = 2;
+            // 
+            // colAd
+            // 
+            colAd.DataPropertyName = "Ad";
+            colAd.HeaderText = "Ad";
+            colAd.MinimumWidth = 6;
+            colAd.Name = "colAd";
+            colAd.Width = 125;
+            // 
+            // colSoyad
+            // 
+            colSoyad.DataPropertyName = "Soyad";
+            colSoyad.HeaderText = "Soyad";
+            colSoyad.MinimumWidth = 6;
+            colSoyad.Name = "colSoyad";
+            colSoyad.Width = 125;
+            // 
+            // colNumara
+            // 
+            colNumara.DataPropertyName = "Numara";
+            colNumara.HeaderText = "Okul No";
+            colNumara.MinimumWidth = 6;
+            colNumara.Name = "colNumara";
+            colNumara.Width = 125;
+            // 
+            // btnKaydet
+            // 
+            btnKaydet.Location = new Point(462, 71);
+            btnKaydet.Name = "btnKaydet";
+            btnKaydet.Size = new Size(120, 33);
+            btnKaydet.TabIndex = 3;
+            btnKaydet.Text = "Kaydet";
+            btnKaydet.UseVisualStyleBackColor = true;
+            btnKaydet.Click += btnKaydet_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnKaydet);
+            Controls.Add(dataGridView1);
             Controls.Add(btnSiniflar);
             Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -70,5 +123,10 @@
 
         private Label label1;
         private Button btnSiniflar;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn colAd;
+        private DataGridViewTextBoxColumn colSoyad;
+        private DataGridViewTextBoxColumn colNumara;
+        private Button btnKaydet;
     }
 }
