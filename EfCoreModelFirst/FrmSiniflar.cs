@@ -44,6 +44,8 @@ namespace EfCoreModelFirst
             else
             {
                 snf.Ad = txtSinifAdi.Text;
+
+                blist.ResetItem(blist.IndexOf(snf));
             }
         }
 
@@ -56,9 +58,9 @@ namespace EfCoreModelFirst
 
         private void btnTamam_Click(object sender, EventArgs e)
         {
-            foreach(Sinif snf in blist)
+            foreach (Sinif snf in blist)
             {
-                if(snf.Id<=0)
+                if (snf.Id <= 0)
                 {
                     context.Siniflar.Add(snf);
                 }
@@ -67,6 +69,14 @@ namespace EfCoreModelFirst
             context.SaveChanges();
 
             Close();
+        }
+
+        private void lbSiniflar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Sinif snf = lbSiniflar.SelectedItem as Sinif;
+
+            if (snf != null)
+                txtSinifAdi.Text = snf.Ad;
         }
     }
 }

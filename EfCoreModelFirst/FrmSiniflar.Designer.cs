@@ -43,6 +43,7 @@
             lbSiniflar.Name = "lbSiniflar";
             lbSiniflar.Size = new Size(324, 244);
             lbSiniflar.TabIndex = 0;
+            lbSiniflar.SelectedIndexChanged += lbSiniflar_SelectedIndexChanged;
             // 
             // btnTamam
             // 
