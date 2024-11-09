@@ -6,5 +6,11 @@ namespace EfCoreModelFirst
         {
             InitializeComponent();
         }
+
+        private void btnSiniflar_Click(object sender, EventArgs e)
+        {
+            FrmSiniflar form = new FrmSiniflar();
+            form.ShowDialog();
+        }
     }
 }
