@@ -5,6 +5,9 @@ namespace BtkKursTakip
         public Form1()
         {
             InitializeComponent();
+
+            tsbKullanici.Text = AppData.Kullanici.KullaniciAdi;
+
         }
 
         private void tsbKurslar_Click(object sender, EventArgs e)

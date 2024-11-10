@@ -33,6 +33,8 @@
             toolStripSeparator1 = new ToolStripSeparator();
             tsbKurslar = new ToolStripButton();
             tsbEgitmenler = new ToolStripButton();
+            tsbKullanici = new ToolStripSplitButton();
+            oturumuKapatToolStripMenuItem = new ToolStripMenuItem();
             toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -40,7 +42,7 @@
             // 
             toolStrip1.BackColor = Color.FromArgb(255, 255, 192);
             toolStrip1.ImageScalingSize = new Size(32, 32);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator1, tsbKurslar, tsbEgitmenler });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator1, tsbKurslar, tsbEgitmenler, tsbKullanici });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(942, 39);
@@ -81,6 +83,23 @@
             tsbEgitmenler.Text = "toolStripButton3";
             tsbEgitmenler.Click += tsbEgitmenler_Click;
             // 
+            // tsbKullanici
+            // 
+            tsbKullanici.Alignment = ToolStripItemAlignment.Right;
+            tsbKullanici.DropDownItems.AddRange(new ToolStripItem[] { oturumuKapatToolStripMenuItem });
+            tsbKullanici.Image = Properties.Resources.user__3_;
+            tsbKullanici.ImageTransparentColor = Color.Magenta;
+            tsbKullanici.Name = "tsbKullanici";
+            tsbKullanici.Size = new Size(143, 36);
+            tsbKullanici.Text = "Kullanıcı Adı";
+            // 
+            // oturumuKapatToolStripMenuItem
+            // 
+            oturumuKapatToolStripMenuItem.Font = new Font("Segoe UI", 12F);
+            oturumuKapatToolStripMenuItem.Name = "oturumuKapatToolStripMenuItem";
+            oturumuKapatToolStripMenuItem.Size = new Size(230, 32);
+            oturumuKapatToolStripMenuItem.Text = "Oturumu Kapat";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -103,5 +122,7 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton tsbKurslar;
         private ToolStripButton tsbEgitmenler;
+        private ToolStripSplitButton tsbKullanici;
+        private ToolStripMenuItem oturumuKapatToolStripMenuItem;
     }
 }
