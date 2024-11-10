@@ -102,7 +102,7 @@
             txtKullaniciAdi.Location = new Point(29, 207);
             txtKullaniciAdi.Name = "txtKullaniciAdi";
             txtKullaniciAdi.Size = new Size(404, 34);
-            txtKullaniciAdi.TabIndex = 2;
+            txtKullaniciAdi.TabIndex = 1;
             // 
             // label4
             // 
@@ -119,6 +119,7 @@
             txtParola.Font = new Font("Segoe UI", 12F);
             txtParola.Location = new Point(29, 275);
             txtParola.Name = "txtParola";
+            txtParola.PasswordChar = '●';
             txtParola.Size = new Size(404, 34);
             txtParola.TabIndex = 2;
             // 

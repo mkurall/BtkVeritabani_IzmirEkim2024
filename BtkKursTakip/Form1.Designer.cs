@@ -99,6 +99,7 @@
             oturumuKapatToolStripMenuItem.Name = "oturumuKapatToolStripMenuItem";
             oturumuKapatToolStripMenuItem.Size = new Size(230, 32);
             oturumuKapatToolStripMenuItem.Text = "Oturumu Kapat";
+            oturumuKapatToolStripMenuItem.Click += oturumuKapatToolStripMenuItem_Click;
             // 
             // Form1
             // 

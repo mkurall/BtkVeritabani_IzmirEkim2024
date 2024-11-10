@@ -1,3 +1,5 @@
+using BtkKursTakip.Modeller;
+
 namespace BtkKursTakip
 {
     public partial class Form1 : Form
@@ -18,8 +20,26 @@ namespace BtkKursTakip
 
         private void tsbEgitmenler_Click(object sender, EventArgs e)
         {
-            FrmEgitmenler form = new FrmEgitmenler();
-            form.ShowDialog();
+            if (AppData.Kullanici.Yetki == YetkiTuru.Yonetici)
+            {
+                FrmEgitmenler form = new FrmEgitmenler();
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Bu iþlem için yetkiniz yok",
+                    "Uyarý", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void oturumuKapatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmGiris girisFormu = new FrmGiris();
+
+            if(girisFormu.ShowDialog() != DialogResult.OK)
+                Application.Exit();
         }
     }
 }
