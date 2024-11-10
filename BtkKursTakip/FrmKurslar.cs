@@ -29,8 +29,10 @@ namespace BtkKursTakip
             colEgitmen.DisplayMember = "AdSoyad";
             colEgitmen.ValueMember = "Id";
 
-            SehirleriGetir();
 
+            //Task.Run(new Action(async () => SehirleriGetir()));
+            
+            SehirleriGetir();
         }
 
         private async void SehirleriGetir()
