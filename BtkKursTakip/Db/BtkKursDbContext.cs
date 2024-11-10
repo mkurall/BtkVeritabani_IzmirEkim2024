@@ -12,6 +12,7 @@ namespace BtkKursTakip.Db
     {
         public DbSet<DbKurs> Kurslar {  get; set; }
         public DbSet<DbEgitmen> Egitmenler { get; set; }
+        public DbSet<DbKullanici> Kullanicilar { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -27,7 +28,12 @@ namespace BtkKursTakip.Db
                 .WithMany(e => e.Kurslar)//eğitmenin ise birçok kursu var 
                 .HasForeignKey(e=>e.EgitmenId)//Kurslar tablosunda Yabancı anahtar
                 .HasPrincipalKey(e=>e.Id);//Egitmenler tablosunda birincil anahtar 
-                
+
+
+            modelBuilder.Entity<DbKullanici>().HasData(
+                new DbKullanici() { Id = 1, KullaniciAdi = "admin", 
+                    Parola = "admin", Yetki = YetkiTuru.Yonetici }
+                );
         }
     }
 }

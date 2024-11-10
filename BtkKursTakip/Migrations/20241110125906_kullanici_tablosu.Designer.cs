@@ -4,6 +4,7 @@ using BtkKursTakip.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BtkKursTakip.Migrations
 {
     [DbContext(typeof(BtkKursDbContext))]
-    partial class BtkKursDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241110125906_kullanici_tablosu")]
+    partial class kullanici_tablosu
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

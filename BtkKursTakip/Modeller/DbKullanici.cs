@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BtkKursTakip.Modeller
 {
     public enum YetkiTuru { Yonetici = 0, Kullanici = 1};
-    public class Kullanici
+    public class DbKullanici
     {
         public int Id { get; set; }
         public string KullaniciAdi { get; set; }
