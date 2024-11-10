@@ -38,10 +38,10 @@
             txtParola = new TextBox();
             btnOturumAc = new Button();
             lblBilgi = new Label();
-            pictureBox2 = new PictureBox();
+            pbLoading = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbLoading).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -133,6 +133,7 @@
             btnOturumAc.TabIndex = 3;
             btnOturumAc.Text = "Oturum Aç";
             btnOturumAc.UseVisualStyleBackColor = false;
+            btnOturumAc.Click += btnOturumAc_Click;
             // 
             // lblBilgi
             // 
@@ -146,23 +147,23 @@
             lblBilgi.Text = "Kullanıcı adı veya parola hatalı";
             lblBilgi.Visible = false;
             // 
-            // pictureBox2
+            // pbLoading
             // 
-            pictureBox2.Image = Properties.Resources.rotate;
-            pictureBox2.Location = new Point(180, 405);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(107, 87);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 5;
-            pictureBox2.TabStop = false;
-            pictureBox2.Visible = false;
+            pbLoading.Image = Properties.Resources.rotate;
+            pbLoading.Location = new Point(180, 405);
+            pbLoading.Name = "pbLoading";
+            pbLoading.Size = new Size(107, 87);
+            pbLoading.SizeMode = PictureBoxSizeMode.Zoom;
+            pbLoading.TabIndex = 5;
+            pbLoading.TabStop = false;
+            pbLoading.Visible = false;
             // 
             // FrmGiris
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(465, 493);
-            Controls.Add(pictureBox2);
+            Controls.Add(pbLoading);
             Controls.Add(lblBilgi);
             Controls.Add(btnOturumAc);
             Controls.Add(txtParola);
@@ -179,7 +180,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbLoading).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -196,6 +197,6 @@
         private TextBox txtParola;
         private Button btnOturumAc;
         private Label lblBilgi;
-        private PictureBox pictureBox2;
+        private PictureBox pbLoading;
     }
 }
