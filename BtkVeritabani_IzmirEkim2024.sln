@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonelTakip", "PersonelTa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfCoreModelFirst", "EfCoreModelFirst\EfCoreModelFirst.csproj", "{56AFFB30-55AC-48F4-972A-8099FAE49418}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtkKursTakip", "BtkKursTakip\BtkKursTakip.csproj", "{DDA32DB4-6AEA-4F62-BE4A-FC1164A4EA3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BtkKursTakip", "BtkKursTakip\BtkKursTakip.csproj", "{DDA32DB4-6AEA-4F62-BE4A-FC1164A4EA3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinanceApp", "BinanceApp\BinanceApp.csproj", "{4EA3DC4E-DDAD-4731-B80B-9CDA35DBDD23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinanceApp", "BinanceApp\BinanceApp.csproj", "{4EA3DC4E-DDAD-4731-B80B-9CDA35DBDD23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtkKitapTakip", "BtkKitapTakip\BtkKitapTakip.csproj", "{7EA4174A-45C7-4083-9569-2DEE886FF7C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4EA3DC4E-DDAD-4731-B80B-9CDA35DBDD23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EA3DC4E-DDAD-4731-B80B-9CDA35DBDD23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EA3DC4E-DDAD-4731-B80B-9CDA35DBDD23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EA4174A-45C7-4083-9569-2DEE886FF7C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EA4174A-45C7-4083-9569-2DEE886FF7C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EA4174A-45C7-4083-9569-2DEE886FF7C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EA4174A-45C7-4083-9569-2DEE886FF7C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
