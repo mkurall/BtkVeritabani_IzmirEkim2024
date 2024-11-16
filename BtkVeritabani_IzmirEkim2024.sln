@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinanceApp", "BinanceApp\Bi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtkKitapTakip", "BtkKitapTakip\BtkKitapTakip.csproj", "{7EA4174A-45C7-4083-9569-2DEE886FF7C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtkTodo", "BtkTodo\BtkTodo.csproj", "{4215833A-0CF0-4FD2-AAF2-F29302ADFE4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7EA4174A-45C7-4083-9569-2DEE886FF7C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EA4174A-45C7-4083-9569-2DEE886FF7C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EA4174A-45C7-4083-9569-2DEE886FF7C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4215833A-0CF0-4FD2-AAF2-F29302ADFE4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4215833A-0CF0-4FD2-AAF2-F29302ADFE4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4215833A-0CF0-4FD2-AAF2-F29302ADFE4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4215833A-0CF0-4FD2-AAF2-F29302ADFE4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
