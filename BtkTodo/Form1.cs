@@ -24,10 +24,14 @@ namespace BtkTodo
 
         Rectangle rectDays;
         Rectangle rectCloseButton;
+        Rectangle rectLeftButton;
+        Rectangle rectRightButton;
 
 
         int hoverDay = 0;
         bool hoverClose = false;
+        bool hoverLeft = false;
+        bool hoverRight = false;
 
         List<DbTodoEntry> entries;
         TodoDbContext context = new TodoDbContext();
@@ -41,6 +45,9 @@ namespace BtkTodo
             ControlStyles.UserPaint |
             ControlStyles.DoubleBuffer,
             true);
+
+            //veritabaný yok ise oluþtur
+            context.Database.EnsureCreated();
 
 
             RefreshEntries();
@@ -107,8 +114,8 @@ namespace BtkTodo
         {
             Rectangle rectCaption = new Rectangle(1, 1, Bounds.Width - 2, 25);
             Rectangle rectYear = new Rectangle(1, rectCaption.Bottom, Bounds.Width - 2, (int)fntYear.GetHeight(e.Graphics));
-            Rectangle rectMonth = new Rectangle(1, rectYear.Bottom - 3, Bounds.Width - 2, (int)fntYear.GetHeight(e.Graphics));
-            rectDays = new Rectangle(1, rectMonth.Bottom + 1, Bounds.Width - 2, Bounds.Height - rectMonth.Bottom);
+            Rectangle rectMonth = new Rectangle(1, rectYear.Bottom - 10, Bounds.Width - 2, (int)fntYear.GetHeight(e.Graphics));
+            rectDays = new Rectangle(1, rectMonth.Bottom + 20, Bounds.Width - 2, Bounds.Height - rectMonth.Bottom);
 
 
             e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
@@ -135,6 +142,21 @@ namespace BtkTodo
             e.Graphics.FillRectangle(Brushes.Tomato, rectYear);
             e.Graphics.FillRectangle(Brushes.Tomato, rectMonth);
 
+            e.Graphics.FillRectangle(Brushes.Tomato, new Rectangle(rectMonth.Left, rectMonth.Bottom-1, rectMonth.Width, 16));
+
+            rectLeftButton = new Rectangle(2, rectMonth.Bottom-3, 16, 16);
+            e.Graphics.DrawImage(Properties.Resources.left_arrow, rectLeftButton, new Rectangle(0, 0, 16, 16), GraphicsUnit.Pixel);
+
+            if (hoverLeft)
+                e.Graphics.DrawRectangle(Pens.White, rectLeftButton);
+
+            rectRightButton = new Rectangle(rectMonth.Width-16, rectMonth.Bottom - 3, 16, 16);
+            e.Graphics.DrawImage(Properties.Resources.right_arrow, rectRightButton, new Rectangle(0, 0, 16, 16), GraphicsUnit.Pixel);
+
+            if (hoverRight)
+                e.Graphics.DrawRectangle(Pens.White, rectRightButton);
+
+
             e.Graphics.FillRectangle(Brushes.WhiteSmoke, rectDays);
 
 
@@ -156,7 +178,7 @@ namespace BtkTodo
                     e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(250, 219, 216)), rectDay);
                 }
 
-                if (d == DateTime.Now.Day)
+                if (d == DateTime.Now.Day && dt.Month == DateTime.Now.Month && dt.Year == DateTime.Now.Year)
 
                     e.Graphics.DrawString(d.ToString(), new Font(fntDay, FontStyle.Bold),
                         Brushes.Tomato,
@@ -195,6 +217,18 @@ namespace BtkTodo
                 Invalidate();
                 return;
             }
+            else if (rectLeftButton.Contains(e.Location))
+            {
+                hoverLeft = true;
+                Invalidate();
+                return;
+            }
+            else if (rectRightButton.Contains(e.Location))
+            {
+                hoverRight = true;
+                Invalidate();
+                return;
+            }
 
             if (hoverClose)
             {
@@ -202,6 +236,17 @@ namespace BtkTodo
                 Invalidate();
             }
 
+            if (hoverLeft)
+            {
+                hoverLeft = false;
+                Invalidate();
+            }
+
+            if (hoverRight)
+            {
+                hoverRight = false;
+                Invalidate();
+            }
 
             for (int d = 1; d <= totalDays; d++)
             {
@@ -303,6 +348,16 @@ namespace BtkTodo
             if (rectCloseButton.Contains(e.Location) && hoverClose)
             {
                 Close();
+            }
+            else if(rectLeftButton.Contains(e.Location))
+            {
+                dt = dt.AddMonths(-1);
+                RefreshEntries();
+            }
+            else if(rectRightButton.Contains(e.Location))
+            {
+                dt = dt.AddMonths(1);
+                RefreshEntries();
             }
         }
 

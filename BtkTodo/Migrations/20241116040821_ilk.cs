@@ -15,11 +15,11 @@ namespace BtkTodo.Migrations
                 name: "Entries",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Info = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ColorIndex = table.Column<int>(type: "int", nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Info = table.Column<string>(type: "TEXT", nullable: false),
+                    ColorIndex = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
