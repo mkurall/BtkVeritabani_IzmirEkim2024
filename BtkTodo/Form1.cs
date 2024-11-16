@@ -46,7 +46,7 @@ namespace BtkTodo
             RefreshEntries();
         }
 
-
+        //Burasý app bar kayýt için baþ
         private int uCallBack;
         Win32Api.ABEdge edge;
         bool isAppBarRegistered = false;
@@ -78,6 +78,7 @@ namespace BtkTodo
         {
             Win32Api.UnregisterAppBar(this.Handle);
         }
+        //burasý appbar son
 
         void RefreshEntries()
         {
