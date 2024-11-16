@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             toolStrip1 = new ToolStrip();
             toolStripButton1 = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
@@ -35,6 +36,8 @@
             tsbEgitmenler = new ToolStripButton();
             tsbKullanici = new ToolStripSplitButton();
             oturumuKapatToolStripMenuItem = new ToolStripMenuItem();
+            toolStripButton2 = new ToolStripButton();
+            toolStripButton3 = new ToolStripButton();
             toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -42,7 +45,7 @@
             // 
             toolStrip1.BackColor = Color.FromArgb(255, 255, 192);
             toolStrip1.ImageScalingSize = new Size(32, 32);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator1, tsbKurslar, tsbEgitmenler, tsbKullanici });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator1, tsbKurslar, tsbEgitmenler, tsbKullanici, toolStripButton2, toolStripButton3 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(942, 39);
@@ -101,6 +104,26 @@
             oturumuKapatToolStripMenuItem.Text = "Oturumu Kapat";
             oturumuKapatToolStripMenuItem.Click += oturumuKapatToolStripMenuItem_Click;
             // 
+            // toolStripButton2
+            // 
+            toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
+            toolStripButton2.ImageTransparentColor = Color.Magenta;
+            toolStripButton2.Name = "toolStripButton2";
+            toolStripButton2.Size = new Size(36, 36);
+            toolStripButton2.Text = "toolStripButton2";
+            toolStripButton2.Click += toolStripButton2_Click;
+            // 
+            // toolStripButton3
+            // 
+            toolStripButton3.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton3.Image = (Image)resources.GetObject("toolStripButton3.Image");
+            toolStripButton3.ImageTransparentColor = Color.Magenta;
+            toolStripButton3.Name = "toolStripButton3";
+            toolStripButton3.Size = new Size(36, 36);
+            toolStripButton3.Text = "toolStripButton3";
+            toolStripButton3.Click += toolStripButton3_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -125,5 +148,7 @@
         private ToolStripButton tsbEgitmenler;
         private ToolStripSplitButton tsbKullanici;
         private ToolStripMenuItem oturumuKapatToolStripMenuItem;
+        private ToolStripButton toolStripButton2;
+        private ToolStripButton toolStripButton3;
     }
 }

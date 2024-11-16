@@ -1,6 +1,7 @@
 using BtkTodo.Db;
 using BtkTodo.Models;
 using BtkTodo.Win32;
+using Microsoft.Win32;
 using System.ComponentModel;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Drawing2D;
@@ -26,15 +27,18 @@ namespace BtkTodo
         Rectangle rectCloseButton;
         Rectangle rectLeftButton;
         Rectangle rectRightButton;
-
+        Rectangle rectSettingsButton;
 
         int hoverDay = 0;
         bool hoverClose = false;
         bool hoverLeft = false;
         bool hoverRight = false;
+        bool hoverSettings = false;
 
         List<DbTodoEntry> entries;
         TodoDbContext context = new TodoDbContext();
+
+        Color headerColor;
 
         public Form1()
         {
@@ -49,6 +53,7 @@ namespace BtkTodo
             //veritabaný yok ise oluþtur
             context.Database.EnsureCreated();
 
+            ReadHeaderColor();
 
             RefreshEntries();
         }
@@ -78,6 +83,9 @@ namespace BtkTodo
             edge = Win32Api.ABEdge.ABE_RIGHT;
 
             Win32Api.ABSetPos(this.Handle, edge, 100);
+
+           Win32Api.SetAutoHide(this.Handle, edge, false);
+       
             isAppBarRegistered = true;
         }
 
@@ -139,10 +147,10 @@ namespace BtkTodo
             if(hoverClose)
                 e.Graphics.DrawRectangle(Pens.White, rectCloseButton);
 
-            e.Graphics.FillRectangle(Brushes.Tomato, rectYear);
-            e.Graphics.FillRectangle(Brushes.Tomato, rectMonth);
+            e.Graphics.FillRectangle(new SolidBrush(headerColor), rectYear);
+            e.Graphics.FillRectangle(new SolidBrush(headerColor), rectMonth);
 
-            e.Graphics.FillRectangle(Brushes.Tomato, new Rectangle(rectMonth.Left, rectMonth.Bottom-1, rectMonth.Width, 16));
+            e.Graphics.FillRectangle(new SolidBrush(headerColor), new Rectangle(rectMonth.Left, rectMonth.Bottom-1, rectMonth.Width, 16));
 
             rectLeftButton = new Rectangle(2, rectMonth.Bottom-3, 16, 16);
             e.Graphics.DrawImage(Properties.Resources.left_arrow, rectLeftButton, new Rectangle(0, 0, 16, 16), GraphicsUnit.Pixel);
@@ -155,6 +163,13 @@ namespace BtkTodo
 
             if (hoverRight)
                 e.Graphics.DrawRectangle(Pens.White, rectRightButton);
+
+            rectSettingsButton = new Rectangle((Bounds.Width - 16) / 2, rectMonth.Bottom - 3, 16, 16);
+            e.Graphics.DrawImage(Properties.Resources.settings16, rectSettingsButton, new Rectangle(0, 0, 16, 16), GraphicsUnit.Pixel);
+
+
+            if (hoverSettings)
+                e.Graphics.DrawRectangle(Pens.White, rectSettingsButton);
 
 
             e.Graphics.FillRectangle(Brushes.WhiteSmoke, rectDays);
@@ -196,10 +211,16 @@ namespace BtkTodo
 
                 if (list.Count > 0)
                 {
-                    DbTodoEntry first = list[0];
-                    Size dotSize = new Size(12, 12);
-                    e.Graphics.FillEllipse(new SolidBrush(TodoColors.ColorList[first.ColorIndex.GetValueOrDefault()].Color),
-                        new Rectangle(rectDay.Left + 3, rectDay.Top + (rectDay.Height - dotSize.Height) / 2, dotSize.Width, dotSize.Height));
+                    for (int k = 0; k < list.Count; k++)
+                    {
+                        if (k >= 2) break;
+
+                        DbTodoEntry first = list[k];
+                        Size dotSize = new Size(12, 12);
+                        e.Graphics.FillEllipse(new SolidBrush(TodoColors.ColorList[first.ColorIndex.GetValueOrDefault()].Color),
+                            new Rectangle(rectDay.Left + 3 + k * (int)(dotSize.Width*0.8), rectDay.Top + (rectDay.Height - dotSize.Height) / 2, dotSize.Width, dotSize.Height));
+                    
+                    }
                 }
 
 
@@ -229,6 +250,12 @@ namespace BtkTodo
                 Invalidate();
                 return;
             }
+            else if(rectSettingsButton.Contains(e.Location))//fare imleci içindeyse
+            {
+                hoverSettings = true;
+                Invalidate();
+                return;
+            }
 
             if (hoverClose)
             {
@@ -245,6 +272,12 @@ namespace BtkTodo
             if (hoverRight)
             {
                 hoverRight = false;
+                Invalidate();
+            }
+
+            if(hoverSettings)
+            {
+                hoverSettings = false;
                 Invalidate();
             }
 
@@ -359,8 +392,38 @@ namespace BtkTodo
                 dt = dt.AddMonths(1);
                 RefreshEntries();
             }
+            else if(rectSettingsButton.Contains(e.Location))
+            {
+                FrmSettings form = new FrmSettings();
+                if(form.ShowDialog() == DialogResult.OK)
+                {
+                    ReadHeaderColor();
+
+                    Invalidate();
+                }
+
+
+
+            }
         }
 
+        void ReadHeaderColor()
+        {
+            RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\BtkTodoApp");
+
+            object keyValue = key.GetValue("Renk");
+
+            if (keyValue != null)
+            {
+                headerColor = Color.FromArgb((int)(((int)keyValue) & 0xFFFFFFFF));
+            }
+            else
+            {
+                headerColor = Color.Tomato;
+            }
+
+            key.Close();
+        }
 
         private void toolTip1_Popup(object sender, PopupEventArgs e)
         {

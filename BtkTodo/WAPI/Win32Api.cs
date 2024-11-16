@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,12 +76,33 @@ namespace BtkTodo.Win32
         [DllImport("User32.dll", CharSet = CharSet.Auto)]
         private static extern int RegisterWindowMessage(string msg);
        
+        public static void SetAutoHide(IntPtr handle, ABEdge edge, bool autoHide)
+        {
+            APPBARDATA abd = new APPBARDATA();
+            abd.cbSize = Marshal.SizeOf(abd);
+            /*
+            abd.hWnd = handle;
+            uint curAutoHide = SHAppBarMessage((int)ABMsg.ABM_GETAUTOHIDEBAR, ref abd);
+            if (curAutoHide.Equals(IntPtr.Zero)) // if there is no current appbar with autohide set for that edge...
+            {
+                abd.lParam = new IntPtr(1); // true
+                SHAppBarMessage((int)ABMsg.ABM_SETAUTOHIDEBAR, ref abd);
+            }
+            */
+            abd.cbSize = Marshal.SizeOf(abd);
+            abd.hWnd = handle;
+            abd.uEdge = (int)edge;
+            abd.lParam = autoHide ? new IntPtr(1) : new IntPtr(1); // true or false
+            SHAppBarMessage((int)ABMsg.ABM_SETAUTOHIDEBAR, ref abd);
+           
+        }
 
         public static int RegisterAppBar(IntPtr handle)
         {
             APPBARDATA abd = new APPBARDATA();
             abd.cbSize = Marshal.SizeOf(abd);
             abd.hWnd = handle;
+            
             int uCallBack = 0;
 
 
