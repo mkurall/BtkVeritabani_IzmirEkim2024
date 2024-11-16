@@ -1,5 +1,7 @@
 using BtkTodo.Db;
 using BtkTodo.Models;
+using BtkTodo.Win32;
+using System.ComponentModel;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Drawing2D;
 using System.Text;
@@ -45,6 +47,38 @@ namespace BtkTodo
         }
 
 
+        private int uCallBack;
+        Win32Api.ABEdge edge;
+        bool isAppBarRegistered = false;
+        protected override void WndProc(ref System.Windows.Forms.Message m)
+        {
+            if (m.Msg == uCallBack)
+            {
+                switch (m.WParam.ToInt32())
+                {
+                    case (int)Win32Api.ABNotify.ABN_POSCHANGED:
+                        Win32Api.ABSetPos(this.Handle, edge, 100);
+                        break;
+                }
+            }
+
+            base.WndProc(ref m);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            uCallBack = Win32Api.RegisterAppBar(this.Handle);
+            edge = Win32Api.ABEdge.ABE_RIGHT;
+
+            Win32Api.ABSetPos(this.Handle, edge, 100);
+            isAppBarRegistered = true;
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            Win32Api.UnregisterAppBar(this.Handle);
+        }
+
         void RefreshEntries()
         {
             entries = context.Entries.ToList();
@@ -63,7 +97,7 @@ namespace BtkTodo
 
         protected override void OnShown(EventArgs e)
         {
-            Bounds = new Rectangle(Screen.PrimaryScreen.WorkingArea.Width - 100, 0,
+            Bounds = new Rectangle(Screen.PrimaryScreen.WorkingArea.Width - 2, 0,
                                 100, Screen.PrimaryScreen.WorkingArea.Height);
 
             TopMost = true;
@@ -216,11 +250,24 @@ namespace BtkTodo
 
         }
 
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            /*
+            Bounds = new Rectangle(Screen.PrimaryScreen.WorkingArea.Width - 100, 0,
+                                100, Screen.PrimaryScreen.WorkingArea.Height);
+            */
+        }
+
         protected override void OnMouseLeave(EventArgs e)
         {
             toolTip1.Hide(this);
             hoverDay = 0;
             Invalidate();
+            
+            /*
+            Bounds = new Rectangle(Screen.PrimaryScreen.WorkingArea.Width - 2, 0,
+                                100, Screen.PrimaryScreen.WorkingArea.Height);
+            */
         }
 
         protected override void OnMouseDoubleClick(MouseEventArgs e)
